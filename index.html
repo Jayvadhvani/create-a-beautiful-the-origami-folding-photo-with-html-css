@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en"><head>
+  
+  
+  <meta charset="UTF-8">
+  <title>Create a Beautiful The Origami Folding Photo with HTML &amp; CSS</title>
+  <style>
+    body { background: #cbd5e1; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; perspective: 1200px;}
+    
+    .folding-wrapper {
+      position: relative;
+      cursor: pointer;
+      /* Drop shadow is attached to the wrapper so it remains static while the pieces lift internally */
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    
+    /* Config for all 3 fragments */
+    .slice {
+      width: 400px;
+      height: 120px;
+      /* Background repeats the same image, we just offset it */
+      background-image: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=600&auto=format&fit=crop');
+      background-size: 400px 360px; /* Force to exact dimensions (3x 120px height) */
+      
+      /* Vital for physical 3D intersection! */
+      transform-style: preserve-3d; 
+    }
+    
+    /* Top Slice is anchored. It doesn't move. */
+    .top {
+      background-position: 0 0px; /* Top part of image */
+      border-radius: 8px 8px 0 0;
+    }
+    
+    /* Middle Slice hinges directly off the TOP edge of itself */
+    .mid {
+      background-position: 0 -120px; /* Middle slice */
+      transform-origin: top;
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    /* Bottom Slice hinges off the top edge of itself (which is attached to the bottom of MID) */
+    .btm {
+      background-position: 0 -240px; /* Bottom slice */
+      border-radius: 0 0 8px 8px;
+      transform-origin: top;
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    /* The folding interaction! */
+    /* Hovering wraps the middle backwards into the screen, and the bottom forwards towards you! */
+    .folding-wrapper:hover .mid {
+      transform: rotateX(-50deg);
+      filter: brightness(60%); /* Artificial shadow for depth! */
+    }
+    
+    .folding-wrapper:hover .btm {
+      /* Stacked rotation! */
+      transform: rotateX(100deg); 
+      filter: brightness(110%); /* Catching light */
+      border-radius: 0;
+    }
+  </style>
+
+            <meta name="description" content="A beautiful component imported via Developer Studio AI.">
+            <meta name="robots" content="index, follow">
+            <meta property="og:title" content="Create a Beautiful The Origami Folding Photo with HTML &amp; CSS">
+            <meta property="og:description" content="A beautiful component imported via Developer Studio AI.">
+            <meta property="og:image" content="https://codescompiler.com/images/posts/css-origami-photo-hinge.png">
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" content="Create a Beautiful The Origami Folding Photo with HTML &amp; CSS">
+            <meta name="twitter:description" content="A beautiful component imported via Developer Studio AI.">
+            <meta name="twitter:image" content="https://codescompiler.com/images/posts/css-origami-photo-hinge.png">
+          </head>
+<body>
+
+<!-- ── CODESCOMPILER DEMO HEADER ── -->
+<style>
+  #cc-demo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 48px;
+    background: #1a1b26;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: white;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999999;
+  }
+  #cc-demo-header a { text-decoration: none; color: white; }
+  .cc-logo { font-size: 14px; font-weight: 900; }
+  .cc-logo span { color: #04aa6d; }
+  .cc-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.12); margin: 0 12px; }
+  .cc-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.65); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cc-actions { display: flex; gap: 8px; }
+  .cc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: rgba(255,255,255,0.7);
+  }
+  .cc-btn:hover { background: rgba(255,255,255,0.15); color: white; }
+  .cc-btn svg { width: 14px; height: 14px; }
+  @media (max-width: 600px) {
+    .cc-title { display: none; }
+    .cc-btn span { display: none; }
+  }
+</style>
+<header id="cc-demo-header">
+  <div style="display: flex; align-items: center; overflow: hidden;">
+    <a href="https://codescompiler.com" class="cc-logo" target="_blank" rel="dofollow"><span>Codes</span>Compiler</a>
+    <div class="cc-sep"></div>
+    <h1 class="cc-title" title="Create a Beautiful The Origami Folding Photo with HTML & CSS" style="margin: 0; font-size: 13px; font-weight: 600;">📺 Create a Beautiful The Origami Folding Photo with HTML & CSS</h1>
+  </div>
+  <div class="cc-actions">
+    <a href="https://codescompiler.com/blog/css-origami-photo-hinge" class="cc-btn" target="_blank" rel="dofollow" title="Read the full post">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+      <span>Back to Post</span>
+    </a>
+    <a href="index.html" class="cc-btn" target="_blank" download="css-origami-photo-hinge.html" title="Download source file">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+      <span>Download</span>
+    </a>
+    <button onclick="document.getElementById('cc-demo-header').style.display='none'" class="cc-btn" title="Hide header for fullscreen view">
+      <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l5-5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+      <span>Fullscreen</span>
+    </button>
+  </div>
+</header>
+<!-- ================================== -->
+
+  <div class="folding-wrapper">
+    <div class="slice top"></div>
+    <div class="slice mid">
+      <!-- The bottom is a child of the mid so it inherits its rotation transforms mathematically! -->
+      <div class="slice btm"></div>
+    </div>
+  </div>
+
+
+</body></html>
